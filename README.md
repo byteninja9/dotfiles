@@ -62,6 +62,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## Demos:
 
-![nvim1](https://github.com/mrsamiofficial9/dotfiles/img/nvim-conf-1.png)
-![nvim2](https://github.com/mrsamiofficial9/dotfiles/img/nvim-conf-2.png)
-![zsh](https://github.com/mrsamiofficial9/dotfiles/img/zsh-conf.png)
+![nvim1](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-1.png)
+![nvim2](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-2.png)
+![zsh](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/zsh-conf.png)
