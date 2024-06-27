@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains my personal configuration files for tmux and zsh. These dotfiles are designed to enhance productivity and provide a customized terminal experience. The setup includes personalized themes, plugins, and key bindings to streamline workflows and improve efficiency.
+This repository contains my personal configuration files for tmux, nvim and zsh. These dotfiles are designed to enhance productivity and provide a customized terminal experience. The setup includes personalized themes, plugins, and key bindings to streamline workflows and improve efficiency.
 
 ## Installation Instructions
 
@@ -56,6 +56,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 - Customized zsh: Enhanced zsh configuration with custom themes and plugins.
 - tmux Configuration: Personalized tmux settings for improved session management.
+- nvim Configuration: Custom nvim setup with plugins and key bindings for an optimized coding experience.
 - Efficient Key Bindings: Streamlined key bindings for faster navigation and operation.
 - Theme and Font Integration: Seamless integration with Fira Code font for better code readability.
 
