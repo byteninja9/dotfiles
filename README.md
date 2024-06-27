@@ -61,8 +61,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 - Theme and Font Integration: Seamless integration with Fira Code font for better code readability.
 
 ## Demos:
+#### NVIM
+![nvim1](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-1.png) <br>
+![nvim2](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-2.png)
+<br>
+#### ZSH
+![zsh](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/zsh-conf.png) 
 
-![nvim1](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-1.png) |
-| ![nvim2](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-2.png) |
-| ![zsh](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/zsh-conf.png) |
-|----------|----------|
