@@ -9,9 +9,9 @@ mv ~/.local/state/nvim{,.bak}
 mv ~/.cache/nvim{,.bak}
 
 # setup nvim
-mv nvim/ ~/.config/
+cp -r nvim/ ~/.config/
 nvim
 
 # setup tmux
-mv tmux/ ~/.config/
+cp -r tmux/ ~/.config/
 tmux source-file ~/.config/tmux/tmux.conf
