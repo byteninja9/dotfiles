@@ -19,8 +19,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-#tmux new -s mrsami 
-#tmux a
 
 
 # Display Pokemon-colorscripts
@@ -41,7 +39,6 @@ pokemon-colorscripts --no-title -s -r
 # To add support for TTYs this line can be optionally added.
 #source ~/.cache/wal/colors-tty.sh
 
-# mrsamiofficial@mrsami  ~  cat .zshrc-backup\~ 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -112,7 +109,6 @@ ZSH_THEME="robbyrussell"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-export PATH="/home/mrsamiofficial/.local/bin:$PATH"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -127,9 +123,7 @@ plugins=(git web-search)
 
 source $ZSH/oh-my-zsh.sh
 autoload -Uz compinit && compinit
-plugins=(history-substring-search)
-export PATH=/home/mrsamiofficial/github/volatility3:$PATH
-export PATH="$PATH:/home/mrsamiofficial/development/flutter/bin"
+plugins=(history-substring-search)"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -206,4 +200,3 @@ alias what='python3 -m pywhat'
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source ~/github/gf/gf-completion.zsh
