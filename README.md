@@ -11,7 +11,7 @@ To install the configuration files, follow these steps:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/mrsamiofficial9/dotfiles.git
+   git clone https://github.com/byteninja9/dotfiles.git
    ```
 
 2. Make the install script executable:
@@ -62,9 +62,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ## Demos:
 #### NVIM
-![nvim1](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-1.png) <br>
-![nvim2](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/nvim-conf-2.png)
+![nvim1](https://github.com/byteninja9/dotfiles/blob/main/img/nvim-conf-1.png) <br>
+![nvim2](https://github.com/byteninja9/dotfiles/blob/main/img/nvim-conf-2.png)
 <br>
 #### ZSH
-![zsh](https://github.com/mrsamiofficial9/dotfiles/blob/main/img/zsh-conf.png) 
+![zsh](https://github.com/byteninja9/dotfiles/blob/main/img/zsh-conf.png) 
 
