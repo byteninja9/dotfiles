@@ -68,3 +68,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #### ZSH
 ![zsh](https://github.com/byteninja9/dotfiles/blob/main/img/zsh-conf.png) 
 
+#### TMUX
+![tmux](https://github.com/byteninja9/dotfiles/blob/main/img/tmux-conf.png)
+
