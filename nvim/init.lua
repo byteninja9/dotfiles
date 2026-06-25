@@ -13,17 +13,13 @@ end
 
 local vim = vim
 local Plug = vim.fn['plug#']
-local function safe_require(module)
-	local ok, err = pcall(require, module)
-	if not ok and not tostring(err):match("module '.-' not found:") then
-		vim.schedule(function()
-			vim.notify("Error loading " .. module .. ": " .. err, vim.log.levels.WARN)
-		end)
-	end
-end
+
+-- disable netrw so nvim-tree owns directory opening (e.g. `nvim .`)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.g.start_time = vim.fn.reltime()
-vim.loader.enable() -- speed
+vim.loader.enable() --  SPEEEEEEEEEEED 
 vim.call('plug#begin')
 
 Plug('catppuccin/nvim', { ['as'] = 'catppuccin' }) --colorscheme
@@ -37,7 +33,7 @@ Plug('goolord/alpha-nvim') --pretty startup
 Plug('nvim-treesitter/nvim-treesitter') --improved syntax
 Plug('mfussenegger/nvim-lint') --async linter
 Plug('nvim-tree/nvim-tree.lua') --file explorer
-Plug('windwp/nvim-autopairs') --autopairs
+Plug('windwp/nvim-autopairs') --autopairs 
 Plug('lewis6991/gitsigns.nvim') --git
 Plug('numToStr/Comment.nvim') --easier comments
 Plug('norcalli/nvim-colorizer.lua') --color highlight
@@ -48,6 +44,22 @@ Plug('MeanderingProgrammer/render-markdown.nvim') --render md inline
 Plug('emmanueltouzery/decisive.nvim') --view csv files
 Plug('folke/twilight.nvim') --surrounding dim
 
+-- glow-up: LSP + completion + diagnostics + UI
+Plug('nvim-lua/plenary.nvim') --lua deps (todo-comments)
+Plug('mason-org/mason.nvim') --LSP/tool installer
+Plug('mason-org/mason-lspconfig.nvim') --mason<->lspconfig bridge
+Plug('neovim/nvim-lspconfig') --LSP server configs
+Plug('saghen/blink.cmp', { ['tag'] = 'v1.*' }) --fast completion (prebuilt binary)
+Plug('rafamadriz/friendly-snippets') --snippet collection
+Plug('rachartier/tiny-inline-diagnostic.nvim') --inline error lens
+Plug('lukas-reineke/indent-blankline.nvim') --indent guides
+Plug('j-hui/fidget.nvim') --LSP progress spinner
+Plug('rcarriga/nvim-notify') --pretty notifications
+Plug('folke/trouble.nvim') --diagnostics/symbols list
+Plug('folke/todo-comments.nvim') --highlight TODO/FIX/HACK
+Plug('folke/flash.nvim') --jump anywhere on screen
+Plug('kylechui/nvim-surround') --add/change/delete surrounding pairs
+
 vim.call('plug#end')
 
 -- move config and plugin config to alternate files
@@ -56,25 +68,43 @@ require("config.mappings")
 require("config.options")
 require("config.autocmd")
 
-safe_require("plugins.alpha")
-safe_require("plugins.barbar")
-safe_require("plugins.colorizer")
-safe_require("plugins.colorscheme")
-safe_require("plugins.comment")
-safe_require("plugins.gitsigns")
-safe_require("plugins.lualine")
-safe_require("plugins.nvim-lint")
-safe_require("plugins.render-markdown")
+require("plugins.alpha")
+-- require("plugins.autopairs")
+require("plugins.barbar")
+require("plugins.colorizer")
+require("plugins.colorscheme")
+require("plugins.comment")
+-- require("plugins.fterm")
+-- require("plugins.fzf-lua")
+require("plugins.gitsigns")
+require("plugins.lualine")
+require("plugins.nvim-lint")
+require("plugins.nvim-tree") -- early: must hijack directory before VimEnter
+require("plugins.render-markdown")
+require("plugins.treesitter") -- must load before initial file's FileType fires
+-- require("plugins.twilight")
+-- require("plugins.which-key")
 
-vim.defer_fn(function()
-	--defer non-essential configs
-	safe_require("plugins.autopairs")
-	safe_require("plugins.fterm")
-	safe_require("plugins.fzf-lua")
-	safe_require("plugins.nvim-tree")
-	safe_require("plugins.treesitter")
-	safe_require("plugins.twilight")
-	safe_require("plugins.which-key")
+vim.defer_fn(function() 
+		--defer non-essential configs,
+		--purely for experimental purposes:
+		--this only makes a difference of +-10ms on initial startup
+require("plugins.autopairs")
+require("plugins.fterm")
+require("plugins.fzf-lua")
+require("plugins.twilight")
+require("plugins.which-key")
+-- glow-up configs (order: notify -> blink -> lsp -> rest)
+require("plugins.notify")
+require("plugins.blink")
+require("plugins.lsp")
+require("plugins.tiny-diagnostic")
+require("plugins.indent")
+require("plugins.fidget")
+require("plugins.todo")
+require("plugins.trouble")
+require("plugins.flash")
+require("plugins.surround")
 end, 100)
 
 load_theme()

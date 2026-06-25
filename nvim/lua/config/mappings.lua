@@ -14,8 +14,8 @@ map("n", "<S-l>", ":bnext<CR>")
 map("n", "<S-h>", ":bprevious<CR>")
 map("n", "<leader>q", ":BufferClose<CR>")
 map("n", "<leader>Q", ":BufferClose!<CR>")
-map("n", "<leader>U", "::bufdo bd<CR>")
-map('n', '<leader>vs', ':vsplit<CR>:bnext<CR>')
+map("n", "<leader>U", "::bufdo bd<CR>") --close all
+map('n', '<leader>vs', ':vsplit<CR>:bnext<CR>') --ver split + open next buffer
 
 -- buffer position nav + reorder
 map('n', '<AS-h>', '<Cmd>BufferMovePrevious<CR>')
@@ -43,31 +43,44 @@ map("n", "<F7>", ":vertical resize +2<CR>")
 map("n", "<F8>", ":vertical resize -2<CR>")
 
 -- fzf and grep
-map("n", "<leader>f", ":lua require('fzf-lua').files()<CR>")
-map("n", "<leader>Fh", ":lua require('fzf-lua').files({ cwd = '~/' })<CR>")
-map("n", "<leader>Fc", ":lua require('fzf-lua').files({ cwd = '~/.config' })<CR>")
-map("n", "<leader>Fl", ":lua require('fzf-lua').files({ cwd = '~/.local/src' })<CR>")
-map("n", "<leader>Ff", ":lua require('fzf-lua').files({ cwd = '..' })<CR>")
-map("n", "<leader>Fr", ":lua require('fzf-lua').resume()<CR>")
-map("n", "<leader>g", ":lua require('fzf-lua').grep()<CR>")
-map("n", "<leader>G", ":lua require('fzf-lua').grep_cword()<CR>")
+map("n", "<leader>f", ":lua require('fzf-lua').files()<CR>") --search cwd
+map("n", "<leader>Fh", ":lua require('fzf-lua').files({ cwd = '~/' })<CR>") --search home
+map("n", "<leader>Fc", ":lua require('fzf-lua').files({ cwd = '~/.config' })<CR>") --search .config
+map("n", "<leader>Fl", ":lua require('fzf-lua').files({ cwd = '~/.local/src' })<CR>") --search .local/src
+map("n", "<leader>Ff", ":lua require('fzf-lua').files({ cwd = '..' })<CR>") --search above
+map("n", "<leader>Fr", ":lua require('fzf-lua').resume()<CR>") --last search
+map("n", "<leader>g", ":lua require('fzf-lua').grep()<CR>") --grep
+map("n", "<leader>G", ":lua require('fzf-lua').grep_cword()<CR>") --grep word under cursor
 
 -- misc
-map("n", "<leader>s", ":%s//g<Left><Left>")
-map("n", "<leader>t", ":NvimTreeToggle<CR>")
-map("n", "<leader>p", switch_theme)
-map("n", "<leader>P", ":PlugInstall<CR>")
-map('n', '<leader>z', ":lua require('FTerm').open()<CR>")
-map('t', '<Esc>', '<C-\\><C-n><CMD>lua require(\"FTerm\").close()<CR>')
-map("n", "<leader>w", ":w<CR>")
-map("n", "<leader>d", ":w ")
-map("n", "<leader>x", "<cmd>!chmod +x %<CR>")
-map("n", "<leader>mv", ":!mv % ")
-map("n", "<leader>R", ":so %<CR>")
-map("n", "<leader>u", ':silent !xdg-open "<cWORD>" &<CR>')
-map("v", "<leader>i", "=gv")
-map("n", "<leader>W", ":set wrap!<CR>")
-map("n", "<leader>l", ":Twilight<CR>")
+map("n", "<leader>s", ":%s//g<Left><Left>") --replace all
+map("n", "<leader>t", ":NvimTreeToggle<CR>") --open file explorer
+map("n", "<leader>p", switch_theme) --cycle themes
+map("n", "<leader>P", ":PlugInstall<CR>") --vim-plug
+map('n', '<leader>z', ":lua require('FTerm').open()<CR>") --open term
+map('t', '<Esc>', '<C-\\><C-n><CMD>lua require("FTerm").close()<CR>') --preserves session
+map("n", "<leader>w", ":w<CR>") --write but one less key
+map("n", "<leader>d", ":w ") --duplicate to new name
+map("n", "<leader>x", "<cmd>!chmod +x %<CR>") --make a file executable
+map("n", "<leader>mv", ":!mv % ") --move a file to a new dir
+map("n", "<leader>R", ":so %<CR>") --reload neovim config
+map("n", "<leader>u", ':silent !xdg-open "<cWORD>" &<CR>') --open a url under cursor
+map("v", "<leader>i", "=gv") --auto indent
+map("n", "<leader>W", ":set wrap!<CR>") --toggle wrap
+map("n", "<leader>l", ":Twilight<CR>") --surrounding dim
+
+-- quality of life (glow-up)
+map("n", "<A-j>", ":m .+1<CR>==")        --move line down
+map("n", "<A-k>", ":m .-2<CR>==")        --move line up
+map("v", "<A-j>", ":m '>+1<CR>gv=gv")    --move selection down
+map("v", "<A-k>", ":m '<-2<CR>gv=gv")    --move selection up
+map("n", "n", "nzzzv")                    --next match, centered
+map("n", "N", "Nzzzv")                    --prev match, centered
+map("n", "<C-d>", "<C-d>zz")             --half-page down, centered
+map("n", "<C-u>", "<C-u>zz")             --half-page up, centered
+map("v", "<", "<gv")                      --indent left, keep selection
+map("v", ">", ">gv")                      --indent right, keep selection
+map("n", "<Esc>", ":noh<CR>")            --clear search highlight
 
 -- decisive csv
 map("n", "<leader>csa", ":lua require('decisive').align_csv({})<cr>")
@@ -75,17 +88,20 @@ map("n", "<leader>csA", ":lua require('decisive').align_csv_clear({})<cr>")
 map("n", "[c", ":lua require('decisive').align_csv_prev_col()<cr>")
 map("n", "]c", ":lua require('decisive').align_csv_next_col()<cr>")
 
-map("n", "<leader>H", function()
+
+map("n", "<leader>H", function() --toggle htop in term
     _G.htop:toggle()
 end)
 
-map("n", "<leader>ma", function()
+
+map("n", "<leader>ma", function() --quick make in dir of buffer
 	local bufdir = vim.fn.expand("%:p:h")
 	vim.cmd("lcd " .. bufdir)
 	vim.cmd("!sudo make uninstall && sudo make clean install %")
 end)
 
-map("n", "<leader>nn", function()
+
+map("n", "<leader>nn", function() --toggle relative vs absolute line numbers
 	if vim.wo.relativenumber then
 		vim.wo.relativenumber = false
 		vim.wo.number = true

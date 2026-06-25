@@ -41,6 +41,18 @@ if ! command -v curl &> /dev/null; then
     exit 1
 fi
 
+# nvim-treesitter (main branch) needs the tree-sitter CLI to compile parsers
+if ! command -v tree-sitter &> /dev/null; then
+    echo "tree-sitter CLI not found; attempting install..."
+    if command -v npm &> /dev/null; then
+        npm install -g tree-sitter-cli
+    elif command -v cargo &> /dev/null; then
+        cargo install tree-sitter-cli
+    else
+        echo "WARNING: install tree-sitter-cli manually (npm i -g tree-sitter-cli) or syntax parsers won't build."
+    fi
+fi
+
 # Create symlink to config
 echo "Creating symlink to ~/.config/nvim..."
 link_dir "$SCRIPT_DIR" "$NVIM_DIR"
